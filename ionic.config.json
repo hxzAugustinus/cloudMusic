@@ -1,0 +1,14 @@
+{
+  "name": "cloudMusic",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/cloudMusic",
+      "proxyUrl": "http://192.168.3.236:3000"
+    }
+  ]
+}

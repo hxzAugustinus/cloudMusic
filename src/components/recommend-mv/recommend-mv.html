@@ -1,0 +1,13 @@
+<!-- Generated template for the RecommendMvComponent component -->
+<div>
+  <p class="program">推荐MV
+    <ion-icon name="arrow-forward"></ion-icon>
+  </p>
+  <section class="recommend-mv">
+    <div *ngFor="let mv of  recommendMv">
+      <img src="{{mv.picUrl}}"/>
+      <p class="mvName">{{mv.name}}</p>
+      <p class="artistName">{{mv.artistName}}</p>
+    </div>
+  </section>
+</div>

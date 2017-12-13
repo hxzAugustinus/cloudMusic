@@ -1,0 +1,73 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons left>left</ion-buttons>
+    <ion-searchbar animated="true" placeholder="发现音乐" (ionInput)="onInput($event)"></ion-searchbar>
+    <ion-buttons right>right</ion-buttons>
+  </ion-toolbar>
+  <nav class="silde-nav">
+    <span (tap)="slideTo(0)">音乐</span>
+    <span (tap)="slideTo(1)">视频</span>
+    <span (tap)="slideTo(2)">电台</span>
+  </nav>
+  <div class="nav-line">
+    <span ngClass="{{lineSlide}}"></span>
+  </div>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-slides centeredSlides="false" id="homeSildes" speed="1000" (ionSlideWillChange)="swipeSlide()">
+    <ion-slide class="music">
+      <ion-slides autoplay="1500" class="ad-slide" pager loop *ngIf="banners.length>0">
+        <ion-slide *ngFor="let banner  of banners">
+          <img src="{{banner.pic}}"/>
+        </ion-slide>
+      </ion-slides>
+      <section class="nav-list">
+        <div>
+          <span></span>
+          私人FM
+        </div>
+        <div>
+          <span></span>
+          每日推荐
+        </div>
+        <div>
+          <span></span>
+          歌单
+        </div>
+        <div>
+          <span></span>
+          排行榜
+        </div>
+      </section>
+      <!--  <recommend-music [recommendMenu]="recommendMenu"></recommend-music>
+		<exclusive-music [exclusive]="exclusive"></exclusive-music>
+		<recommend-mv [recommendMv]="recommendMv"></recommend-mv>-->
+      <ng-template #programes></ng-template>
+      <button class="button-block" (tap)="openSortModal()">调整栏目顺序</button>
+    </ion-slide>
+    <ion-slide class="video">
+      <ion-list>
+        <ion-item *ngFor="let  video of videos.list">
+          <img src="{{video.cover}}"/>
+          <div>{{video.briefDesc||video.name}}</div>
+        </ion-item>
+      </ion-list>
+    </ion-slide>
+    <ion-slide>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" threshold="10%"
+                       *ngIf="lineSlide=='lineSlide1'&&videos.hasMore">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

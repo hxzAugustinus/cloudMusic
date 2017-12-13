@@ -1,0 +1,12 @@
+<!-- Generated template for the RecommendMusicComponent component -->
+<div>
+  <p class="program">推荐歌单
+    <ion-icon name="arrow-forward"></ion-icon>
+  </p>
+  <section class="recommend-music">
+    <div *ngFor="let song of  recommendMenu">
+      <span> <img src="{{song.picUrl}}"/>  </span>
+      <p>{{song.name}}</p>
+    </div>
+  </section>
+</div>

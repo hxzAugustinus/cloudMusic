@@ -1,0 +1,36 @@
+recommend-mv {
+  .program {
+    text-align: left;
+    padding-left: 15px;
+    border-left: 3px solid red;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    ion-icon{
+      font-size: 1.5rem;
+    }
+  }
+
+  .recommend-mv {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    div {
+      width: 175px;
+      margin-bottom: 0.5rem;
+      .mvName {
+        margin: 0 0.5rem;
+        text-align: left;
+        line-height: 20px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      .artistName {
+        @extend .mvName;
+        font-size: 0.8rem;
+        opacity: 0.6;
+      }
+    }
+  }
+}

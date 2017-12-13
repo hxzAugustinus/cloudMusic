@@ -1,0 +1,12 @@
+<!-- Generated template for the ExclusiveMusicComponent component -->
+<div>
+  <p class="program">独家放送
+    <ion-icon name="arrow-forward"></ion-icon>
+  </p>
+  <section class="exclusive-music">
+    <div *ngFor="let song of  exclusive">
+      <img src="{{song.picUrl}}"/>
+      <p>{{song.name}}</p>
+    </div>
+  </section>
+</div>

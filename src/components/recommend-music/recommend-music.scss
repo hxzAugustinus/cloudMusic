@@ -1,0 +1,41 @@
+recommend-music {
+  .program {
+    text-align: left;
+    padding-left: 15px;
+    border-left: 3px solid red;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    ion-icon{
+      font-size: 1.5rem;
+    }
+  }
+  .recommend-music {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    div {
+      display: inline-block;
+      width: 115px;
+      min-height: 135px;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      span {
+        display: block;
+        width: 100%;
+        min-height: 115px;
+      }
+      p {
+        margin: 0;
+        height: 40px;
+        line-height: 20px;
+        text-align: left;
+        padding: 0 3px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+      }
+    }
+
+  }
+}
