@@ -12,3 +12,7 @@ $ node app.js
   $ npm instll 
   $ npm  build
  ```
+ ### Technology 
+    1. How to send http request ;
+    2. Components dynamic order ;
+    3. How to refresh or infinite  in  some of  slides;  
