@@ -22,6 +22,8 @@ import {IndividualProvider} from '../providers/individual/individual';
 import {ComponentsModule} from '../components/components.module';
 /*滑动和拖动事件*/
 import {DragulaModule} from 'ng2-dragula';
+import {dividerService} from "../providers/divider/dividerService";
+import {mockData} from "../providers/mockData";
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import {DragulaModule} from 'ng2-dragula';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Api,
     User,
-    IndividualProvider
+    IndividualProvider,
+    dividerService,
+    mockData
   ]
 })
 export class AppModule {

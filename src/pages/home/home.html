@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="my-music">
+<ion-content class="my-music" (ionScroll)="scrollHandler($event)">
   <ion-list class="file-count">
     <a ion-item>
       <ion-icon name="leaf" item-start></ion-icon>
@@ -30,36 +30,7 @@
       <ion-badge item-end>26</ion-badge>
     </a>
   </ion-list>
-
-  <ion-item-group>
-    <ion-item-divider color="light">
-      <ion-icon name="ios-arrow-down"></ion-icon>
-      我创建的歌单
-    </ion-item-divider>
-    <div id="example">
-      <ion-item>Angola</ion-item>
-      <ion-item>Argentina</ion-item>
-      <ion-item>Argentina</ion-item>
-      <ion-item>Argentina</ion-item>
-      <ion-item>Argentina</ion-item>
-      <ion-item>Argentina</ion-item>
-      <ion-item>Argentina</ion-item>
-    </div>
-  </ion-item-group>
-  <ion-item-group>
-    <ion-item-divider color="light">
-      <ion-icon name="ios-arrow-forward"></ion-icon>
-      我收藏的歌单
-    </ion-item-divider>
-    <ion-item>Angola</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-    <ion-item>Argentina</ion-item>
-  </ion-item-group>
+  <list-divider [menuList]="songList" (foldScroll)="scrollFold($event)"></list-divider>
+  <list-divider [menuList]="collectList" (foldScroll)="scrollFold($event)"></list-divider>
+  <list-divider [menuList]="MVlist" (foldScroll)="scrollFold($event)"></list-divider>
 </ion-content>

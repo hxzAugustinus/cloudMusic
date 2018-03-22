@@ -1,33 +1,39 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {Component, NgZone, ViewChild} from '@angular/core';
+import {NavController, Content} from 'ionic-angular';
+import {dividerService} from "../../providers/divider/dividerService";
+import {mockData} from "../../providers/mockData";
+
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  @ViewChild(Content) content: Content;
+  songList: any;
+  collectList: any;
+  MVlist: any;
 
-  constructor(public navCtrl: NavController) {
-
+  constructor(public navCtrl: NavController, public ngZone: NgZone, public dividerService: dividerService, public mockData: mockData) {
+    this.songList = this.mockData.getMySongList();
+    this.collectList = this.mockData.getMyCollectList();
+    this.MVlist = this.mockData.getMyMVList();
   }
 
-  ionViewDidLoad(){
-    let io = new IntersectionObserver(entries => {
-      console.log(entries[0])
-    }, {
-      threshold: [0, 1],
-      root: document.querySelector('.my-music')
-    });
-
-    let node=document.getElementById('example');
-    // 开始观察
-    io.observe(node);
-
-    /*// 停止观察
-    io.unobserve(node);
-    // 关闭观察器
-    io.disconnect();*/
+  scrollHandler(event) {
+    this.ngZone.run(() => {
+        /*todo: sometime event my be null ,need analyze*/
+        console.log(event);
+        event && this.dividerService.announceScroll(event.directionY);
+      }
+    )
   }
 
-
+  scrollFold(top) {
+    let dimensions = this.content.getContentDimensions();
+    this.content.scrollTo(0, ( dimensions.scrollTop + top - dimensions.contentTop  ));
+  }
 }
+
+
+

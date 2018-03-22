@@ -13,6 +13,6 @@ $ node app.js
   $ npm  build
  ```
  ### Technology 
-    1. How to send http request ;
-    2. Components dynamic order ;
+    1. How to send http request;
+    2. Components dynamic order;
     3. How to refresh or infinite  in  some of  slides;  
