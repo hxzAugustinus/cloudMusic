@@ -41,7 +41,7 @@ $ node app.js
     <auto-install enabled="true" />
 </chcp>
 ```
-3. run 
+3. run the command
 ```sh
 cordova-hcp build;
 ```
