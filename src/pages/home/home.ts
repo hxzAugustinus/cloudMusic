@@ -23,7 +23,7 @@ export class HomePage {
   scrollHandler(event) {
     this.ngZone.run(() => {
         /*todo: sometime event my be null ,need analyze*/
-        /*console.log(event);*/
+        /*console.log(event);master */
         event && this.dividerService.announceScroll(event.directionY);
       }
     )
