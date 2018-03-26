@@ -3,8 +3,12 @@
   <div style="min-height: 4rem;">
     <ion-item-divider style="height: 4rem;" [ngStyle]="{'position':divider.position,'top':divider.top+'px'}"
                       color="light" (click)="foldHandler()">
-      <ion-icon name="ios-arrow-down"></ion-icon>
-      {{menuList.title}}
+      <div [ngSwitch]="divider.foldStatus"  class="icon-head">
+        <ion-icon *ngSwitchCase="false" name="ios-arrow-down"></ion-icon>
+        <ion-icon *ngSwitchCase="true" name="ios-arrow-forward"></ion-icon>
+      </div>
+
+      {{menuList.title}}88888
     </ion-item-divider>
   </div>
   <div [hidden]="divider.foldStatus">
