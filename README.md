@@ -55,4 +55,4 @@ get the cordova-hcp.json
   "content_url": "http://host:port"
 }
 ```
-4. move www folder to the your host server;
+4. copy www folder to the your host server;
