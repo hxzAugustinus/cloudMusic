@@ -48,10 +48,6 @@ export class ListDividerComponent {
     })
   }
 
-  ngAfterViewInit() {
-    console.log(this.elementRef);
-  }
-
   foldHandler() {
     this.divider.foldStatus = !this.divider.foldStatus;
     this.divider.position = 'relative';
