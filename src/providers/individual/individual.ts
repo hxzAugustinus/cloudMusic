@@ -129,4 +129,16 @@ export class IndividualProvider {
       console.error('ERROR', err);
     });
   }
+
+
+  getSongList(id:number) {
+    let seq = this.api.get('playlist/detail',{id:id});
+
+    return seq.toPromise().then((data:any) => {
+      console.log(data);
+      return data.code == 200 && data;
+    }, err => {
+      console.error('ERROR', err);
+    });
+  }
 }

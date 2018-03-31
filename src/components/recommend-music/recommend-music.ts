@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 
 /**
@@ -13,9 +13,13 @@ import {Component, Input} from '@angular/core';
 })
 export class RecommendMusicComponent {
   @Input() recommendMenu: Array<any>;
+  @Output() currentSong = new EventEmitter<any>();
 
   constructor() {
     console.log('Hello RecommendMusicComponent Component');
   }
 
+  handler(song) {
+    this.currentSong.emit(song);
+  }
 }

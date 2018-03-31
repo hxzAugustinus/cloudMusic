@@ -10,6 +10,7 @@ import {HomePage} from '../pages/home/home';
 import {SearchPage} from '../pages/search/search';
 import {sortModal} from "../pages/sort-modal/programe-sort";
 import {TabsPage} from '../pages/tabs/tabs';
+import {SongListPage} from "../pages/song-list/song-list";
 /*plugin*/
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -24,6 +25,7 @@ import {ComponentsModule} from '../components/components.module';
 import {DragulaModule} from 'ng2-dragula';
 import {dividerService} from "../providers/divider/dividerService";
 import {mockData} from "../providers/mockData";
+import { ProfileProvider } from '../providers/profile/profile';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import {mockData} from "../providers/mockData";
     SearchPage,
     sortModal,
     TabsPage,
+    SongListPage,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import {mockData} from "../providers/mockData";
     SearchPage,
     sortModal,
     TabsPage,
+    SongListPage,
   ],
   providers: [
     StatusBar,
@@ -63,7 +67,8 @@ import {mockData} from "../providers/mockData";
     User,
     IndividualProvider,
     dividerService,
-    mockData
+    mockData,
+    ProfileProvider
   ]
 })
 export class AppModule {

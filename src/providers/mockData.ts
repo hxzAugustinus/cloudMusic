@@ -6,7 +6,7 @@ export class mockData {
   getMySongList() {
     return {
       title: '我创建的歌单',
-      list: [
+      playlist: [
         {id: 1, name: 'song1'},
         {id: 2, name: 'song2'},
         {id: 3, name: 'song3'},
@@ -24,7 +24,7 @@ export class mockData {
   getMyCollectList() {
     return {
       title: '我收藏的歌单',
-      list: [
+      playlist: [
         {id: 11, name: 'song11'},
         {id: 12, name: 'song12'},
         {id: 13, name: 'song13'},
@@ -43,7 +43,7 @@ export class mockData {
   getMyMVList() {
     return {
       title: '我收藏的MV',
-      list: [
+      playlist: [
         {id: 11, name: 'mv11'},
         {id: 12, name: 'mv12'},
         {id: 13, name: 'mv13'},

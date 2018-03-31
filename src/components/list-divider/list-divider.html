@@ -1,7 +1,7 @@
 <!-- Generated template for the ListDividerComponent component -->
 <ion-item-group>
-  <div style="min-height: 4rem;">
-    <ion-item-divider style="height: 4rem;" [ngStyle]="{'position':divider.position,'top':divider.top+'px'}"
+  <div style="min-height: 40px;">
+    <ion-item-divider style="height: 40px;" [ngStyle]="{'position':divider.position,'top':divider.top+'px'}"
                       color="light" (click)="foldHandler()">
       <div [ngSwitch]="divider.foldStatus" class="icon-head">
         <ion-icon *ngSwitchCase="false" name="ios-arrow-down"></ion-icon>
@@ -12,6 +12,16 @@
     </ion-item-divider>
   </div>
   <div [hidden]="divider.foldStatus">
-    <ion-item *ngFor="let item of menuList.list">{{item.name}}</ion-item>
+    <ion-item *ngFor="let item of menuList.playlist" (click)="handler(item)">
+      <ion-avatar item-start>
+        <img src="{{item.coverImgUrl||'assets/img/icon.png'}}"/>
+      </ion-avatar>
+      <h3>{{item.name}}</h3>
+      <p>
+        <span *ngIf="menuList.options&&menuList.options.count">{{item.trackCount}}首</span>
+        <span *ngIf="menuList.options&&menuList.options.creator">,by{{item.creator?item.creator.nickname:''}}</span>
+        <span *ngIf="menuList.options&&menuList.options.download">已下载5首</span>
+      </p>
+    </ion-item>
   </div>
 </ion-item-group>

@@ -4,7 +4,7 @@
     <ion-icon name="arrow-forward"></ion-icon>
   </p>
   <section class="recommend-music">
-    <div *ngFor="let song of  recommendMenu">
+    <div *ngFor="let song of  recommendMenu" (click)="handler(song)">
       <span> <img src="{{song.picUrl}}"/>  </span>
       <p>{{song.name}}</p>
     </div>

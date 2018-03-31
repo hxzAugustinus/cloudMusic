@@ -9,4 +9,15 @@ list-divider {
       color: rgba(0,0,0,0.7);
     }
   }
+
+  ion-item{
+    h3{
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p{
+      font-weight: lighter;
+      font-size: 1rem!important;
+    }
+  }
 }
