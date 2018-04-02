@@ -5,6 +5,8 @@ import {RecommendMusicComponent} from "../../components/recommend-music/recommen
 import {RecommendMvComponent} from "../../components/recommend-mv/recommend-mv";
 import {ExclusiveMusicComponent} from "../../components/exclusive-music/exclusive-music";
 import {sortModal} from "../sort-modal/programe-sort";
+import {SongListPage} from "../song-list/song-list";
+
 /**
  * Generated class for the SearchPage page.
  *
@@ -43,9 +45,8 @@ export class SearchPage {
   /*视频*/
   videos: any = {list: []};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public Individual: IndividualProvider, private ModalController: ModalController, private componentFactoryResolver: ComponentFactoryResolver ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public Individual: IndividualProvider, private ModalController: ModalController, private componentFactoryResolver: ComponentFactoryResolver) {
   }
-
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter SearchPage');
@@ -59,12 +60,13 @@ export class SearchPage {
         console.log(data);
         this.recommendMenu = data;
         this.initProgrames(RecommendMusicComponent, 'recommendMenu', data);
-      })
+        this.initProgrames(RecommendMusicComponent, 'currentSong', this.handlerSongList, 'event');
+      });
       this.Individual.getExclusive().then((data) => {
         console.log(data);
         this.exclusive = data;
         this.initProgrames(ExclusiveMusicComponent, 'exclusive', data);
-      })
+      });
       this.Individual.getrecommendMv().then((data) => {
         console.log(data);
         this.recommendMv = data;
@@ -114,14 +116,18 @@ export class SearchPage {
     components.forEach((item) => {
       console.log(item.name);
       let componentFactory = this.componentFactoryResolver.resolveComponentFactory(item);
-      let componentRef = this.container.createComponent(componentFactory);
-      this.componentRefes[item.name] = componentRef;
+      this.componentRefes[item.name] = this.container.createComponent(componentFactory);
     })
   }
 
   /*往对应组件里传参数*/
-  initProgrames(component: Type<any>, key: string, val: Array<any>) {
-    this.componentRefes[component.name].instance[key] = val;
+  initProgrames(component: Type<any>, key: string, val: any, type: any = null) {
+    if (type && type == 'event') {
+      this.componentRefes[component.name].instance[key].subscribe(val);
+    } else {
+      this.componentRefes[component.name].instance[key] = val;
+    }
+
   }
 
   onInput(e: any) {
@@ -135,7 +141,7 @@ export class SearchPage {
       this.Individual.getComponents().then((data) => {
         this.moveComponent(data);
       })
-    })
+    });
     modal.present();
   }
 
@@ -144,16 +150,16 @@ export class SearchPage {
     let ViewRefs = {};
     this.programes.forEach((item, index) => {
       ViewRefs[item.name] = (this.container.get(index));
-    })
+    });
     /*获取动态组件目标排序*/
     let targets: Array<any> = [];
     to.forEach((item, index) => {
       targets[item.name] = index;
-    })
+    });
     /*移动对应的动态组件的viewRef到对应的目标序列*/
     Object.keys(ViewRefs).forEach((item) => {
       this.container.move(ViewRefs[item], targets[item]);
-    })
+    });
     /*保存排序后的动态组件序列*/
     this.programes = to;
   }
@@ -179,11 +185,17 @@ export class SearchPage {
      10%  infinite 的 threshold
      (83-20)/607>10% ,可以触发infinite,所以设置为20
    */
-    this.initVideos().then(()=>{
+    this.initVideos().then(() => {
       this.content.scrollTo(0, 20).then(() => {
         infinite.complete();
       });
     })
+  }
+
+  /*notice:此函数必须写成arrow function格式，以便this指向SearchPage，若写成非arrow funtion，this=null */
+  handlerSongList = (data) => {
+    console.log(data);
+    this.navCtrl.push(SongListPage, {data:data},{animate:false});
   }
 
 }

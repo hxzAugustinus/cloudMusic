@@ -56,3 +56,9 @@ get the cordova-hcp.json
 }
 ```
 4. copy www folder to the your host server;
+- hook to replace proxy;
+ 1. code in config.xml
+ ```xml
+<hook src="hooks/before_build/replaceProxy.js" type="before_run" />
+```
+ 2. in the replaceProxy.js to replace  the  proxy in the main.js

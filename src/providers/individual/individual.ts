@@ -68,7 +68,7 @@ export class IndividualProvider {
   }
 
   getrecommendMv() {
-    let seq = this.api.get('/personalized/mv');
+    let seq = this.api.get('personalized/mv');
 
     return seq.toPromise().then((data:any) => {
       console.log(data);
@@ -124,6 +124,18 @@ export class IndividualProvider {
     return seq.toPromise().then((data:any) => {
       console.log(data);
       this.videoState.offset++;
+      return data.code == 200 && data;
+    }, err => {
+      console.error('ERROR', err);
+    });
+  }
+
+
+  getSongList(id:number) {
+    let seq = this.api.get('playlist/detail',{id:id});
+
+    return seq.toPromise().then((data:any) => {
+      console.log(data);
       return data.code == 200 && data;
     }, err => {
       console.error('ERROR', err);

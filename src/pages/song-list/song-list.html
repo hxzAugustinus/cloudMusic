@@ -1,0 +1,75 @@
+<!--
+  Generated template for the SongListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>歌单</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content fullscreen="true" (ionScroll)="handlerScroll($event)">
+  <section class="backdrop"
+           [ngStyle]="{'background-image': 'url('+(baseInfo.picUrl||baseInfo.coverImgUrl)+')'}"></section>
+  <section class="content-header" [ngStyle]="{filter:'opacity('+currentOpacity+'%)'}">
+    <ion-searchbar [showCancelButton]="true" animated="true" cancelButtonText="取消"
+                   placeholder="搜索歌单内歌曲"></ion-searchbar>
+    <ion-grid class="list-header">
+      <ion-row>
+        <ion-col>
+          <img src="{{baseInfo.picUrl||baseInfo.coverImgUrl}}"/>
+          <span class="play-number">{{listDetail.playCount}}</span>
+        </ion-col>
+        <ion-col col-7>
+          <div>{{baseInfo.name }}</div>
+          <div ion-item detail-push>
+            <ion-avatar item-start>
+              <img *ngIf="listDetail.creator.avatarUrl;else defaultIcon" src="{{listDetail.creator.avatarUrl}}"/>
+              <ng-template #defaultIcon>
+                <ion-icon class="ion-ios-contact-outline" style="font-size: 36px"></ion-icon>
+              </ng-template>
+            </ion-avatar>
+            <span>{{listDetail.creator.nickname}}</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="feature-list">
+      <ion-row>
+        <ion-col>
+          <ion-icon class="ion-ios-add-circle-outline"></ion-icon>
+          <span>100</span>
+        </ion-col>
+        <ion-col>
+          <ion-icon class="ion-ios-text-outline"></ion-icon>
+          <span>100</span>
+        </ion-col>
+        <ion-col>
+          <ion-icon class="ion-ios-share-outline"></ion-icon>
+          <span>100</span>
+        </ion-col>
+        <ion-col>
+          <ion-icon class="ion-ios-download-outline"></ion-icon>
+          <span>100</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <div #playlist class="tool-menu">
+    <ion-icon class="ion-ios-play"></ion-icon>
+    <p>播放全部</p>
+    <ion-icon ngClass="end" class="ion-ios-menu"></ion-icon>
+  </div>
+  <ion-scroll [scrollY]="scrollMark">
+    <ion-list class="file-count">
+      <a ion-item *ngFor="let song of listDetail.tracks;index as i;">
+        <span item-start>{{i+1}}</span>
+        <h2>{{song.name}}</h2>
+        <p>Hayao Miyazaki • 1988</p>
+      </a>
+    </ion-list>
+  </ion-scroll>
+
+
+</ion-content>

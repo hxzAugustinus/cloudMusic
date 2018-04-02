@@ -28,6 +28,7 @@
         <auto-install enabled="true" />
     </chcp>
     <platform name="android">
+        <hook src="hooks/before_build/replaceProxy.js" type="before_run" />
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
