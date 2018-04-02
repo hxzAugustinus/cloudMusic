@@ -68,7 +68,7 @@ export class IndividualProvider {
   }
 
   getrecommendMv() {
-    let seq = this.api.get('/personalized/mv');
+    let seq = this.api.get('personalized/mv');
 
     return seq.toPromise().then((data:any) => {
       console.log(data);

@@ -2,6 +2,7 @@ page-song-list {
   ion-header {
     .toolbar-background {
       background-color: rgba(0, 0, 0, 0);
+      border-width: 0 !important;
     }
     .toolbar-title {
       color: white;
@@ -9,54 +10,81 @@ page-song-list {
   }
   .content {
     color: white;
-    background-color: #2b2626;
-    background-size:100000% 100000%;
+    background-size: 100000% 100000%;
     .scroll-content {
       background-color: rgba(255, 255, 255, 0.1);
-      ion-searchbar {
-        min-height: 30px;
-        background: rgba(0, 0, 0, 0);
-        .searchbar-search-icon {
-          top: 10px !important;
-        }
-        input {
-          font-size: 1.2rem !important;
-          border-radius: 16px !important;
-          height: 2.7rem !important;
-          background-color: rgba(255,255,255,0.1);
-          &::-webkit-input-placeholder{
-            color: rgba(255, 255, 255, 0.3)!important;
-          }
-        }
+      .backdrop {
+        height: 25rem;
+        width: 100%;
+        position: absolute;
+        margin-top: -48px;
+        background-size: 100% 100%;
+        filter: blur(10px);
       }
-      .list-header {
-        .play-number {
-          position: absolute;
-          top: 5px;
-          right: 10px;
-        }
-        .item {
-          margin-top: 1rem;
+      .content-header {
+        height: calc(25rem - 48px);
+        ion-searchbar {
+          min-height: 30px;
           background: rgba(0, 0, 0, 0);
-          ion-avatar {
-            margin-right: 0.4rem;
+          .searchbar-search-icon {
+            top: 10px !important;
           }
-          .item-inner {
-            border-width: 0;
-            font-size: 1.2rem;
-            color: white;
-            ion-icon {
-              margin-left: 1rem;
-              font-size: 1.2rem;
+          input {
+            font-size: 1.2rem !important;
+            border-radius: 16px !important;
+            height: 2.7rem !important;
+            background-color: rgba(255, 255, 255, 0.1);
+            &::-webkit-input-placeholder {
+              color: rgba(255, 255, 255, 0.3) !important;
             }
           }
         }
-      }
-      .feature-list {
-        text-align: center;
-        ion-icon {
-          display: block;
+        .list-header {
+          .play-number {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+          }
+          .item {
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0);
+            ion-avatar {
+              margin-right: 0.4rem;
+            }
+            .item-inner {
+              border-width: 0;
+              font-size: 1.2rem;
+              color: white;
+              ion-icon {
+                margin-left: 1rem;
+                font-size: 1.2rem;
+              }
+            }
+          }
         }
+        .feature-list {
+          text-align: center;
+          ion-icon {
+            display: block;
+          }
+        }
+      }
+      .tool-menu {
+        height: 4rem;
+        color: black;
+        background: white;
+        position: relative;
+        padding:0 16px;
+        border-bottom: 0.55px solid #c8c7cc;
+        display: flex;
+        align-items: center;
+        p{
+          flex: 1;
+          margin:0 2rem;
+        }
+      }
+      ion-scroll {
+        height: calc(100% - 4rem);
       }
     }
 
