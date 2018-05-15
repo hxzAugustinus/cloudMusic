@@ -31,8 +31,4 @@ export class sortModal {
     this.ViewController.dismiss(this.programes);
   }
 
-  test() {
-    console.log(1111);
-  }
-
 }

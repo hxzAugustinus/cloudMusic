@@ -11,4 +11,8 @@ export class AboutPage {
 
   }
 
+  toplayer(){
+    /*this.navCtrl.parent.select(4);*/
+  }
+
 }

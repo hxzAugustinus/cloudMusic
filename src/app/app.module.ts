@@ -11,6 +11,8 @@ import {SearchPage} from '../pages/search/search';
 import {sortModal} from "../pages/sort-modal/programe-sort";
 import {TabsPage} from '../pages/tabs/tabs';
 import {SongListPage} from "../pages/song-list/song-list";
+import {PlayerPage} from '../pages/player/player';
+import {ListSongModalPage} from "../pages/list-song-modal/list-song-modal";
 /*plugin*/
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -19,13 +21,18 @@ import {IonicStorageModule} from '@ionic/storage';
 import {Api} from '../providers/api/api';
 import {User} from '../providers/user/user';
 import {IndividualProvider} from '../providers/individual/individual';
+import {dividerService} from "../providers/divider/dividerService";
+import {ProfileProvider} from '../providers/profile/profile';
 /*component*/
 import {ComponentsModule} from '../components/components.module';
 /*滑动和拖动事件*/
 import {DragulaModule} from 'ng2-dragula';
-import {dividerService} from "../providers/divider/dividerService";
+/*模拟数据*/
 import {mockData} from "../providers/mockData";
-import { ProfileProvider } from '../providers/profile/profile';
+/*管道符*/
+import {PipesModule} from "../pipes/pipes.module";
+import { MediaPlayerProvider } from '../providers/media-player/media-player';
+
 
 @NgModule({
   declarations: [
@@ -37,14 +44,22 @@ import { ProfileProvider } from '../providers/profile/profile';
     sortModal,
     TabsPage,
     SongListPage,
+    PlayerPage,
+    ListSongModalPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ComponentsModule,
     DragulaModule,
+    PipesModule,
     IonicModule.forRoot(MyApp, {
-      mode: 'ios'
+      mode: 'ios',
+      activator: 'ripple',
+      backButtonText: '',
+      pageTransition: 'ios-transition',
+      tabsHideOnSubPages: true,
+      pageTransitionDelay: 40,
     }),
     IonicStorageModule.forRoot()
   ],
@@ -58,6 +73,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     sortModal,
     TabsPage,
     SongListPage,
+    PlayerPage,
+    ListSongModalPage
   ],
   providers: [
     StatusBar,
@@ -68,7 +85,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     IndividualProvider,
     dividerService,
     mockData,
-    ProfileProvider
+    ProfileProvider,
+    MediaPlayerProvider
   ]
 })
 export class AppModule {

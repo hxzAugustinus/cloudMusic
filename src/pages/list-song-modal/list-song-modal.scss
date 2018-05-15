@@ -1,0 +1,19 @@
+page-list-song-modal {
+  bottom:0;
+  height: 66%!important;
+  top:auto!important;
+  ion-header{
+    .loop{
+      position: relative;
+      background-image: url(../assets/img/play_icn_loop.png);
+      width: 2rem;
+      height: 2rem;
+      font-size: 1rem;
+      line-height: 2rem;
+    }
+    .icon{
+      font-size: 2.4rem!important;
+      color: gray;
+    }
+  }
+}

@@ -74,17 +74,34 @@ page-song-list {
         color: black;
         background: white;
         position: relative;
-        padding:0 16px;
+        padding: 0 16px;
         border-bottom: 0.55px solid #c8c7cc;
         display: flex;
         align-items: center;
-        p{
+        p {
           flex: 1;
-          margin:0 2rem;
+          margin: 0 1rem;
         }
       }
       ion-scroll {
         height: calc(100% - 4rem);
+        .item {
+          span {
+            width: 1.7rem;
+            margin-left: 2px;
+            font-size: 1.4rem;
+            text-align: center;
+          }
+          p {
+            span {
+              font-size: 1rem;
+              em {
+                margin-left: -6px;
+                margin-right: 1px;
+              }
+            }
+          }
+        }
       }
     }
 

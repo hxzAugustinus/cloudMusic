@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>player</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <img class="needle" ngClass="{{mPlayer.playState?'active':'unactive'}}" src="assets/img/ic_needle.png">
+  <div class="disk-bg"></div>
+  <ion-slides class="disk-list" [loop]="true" [speed]="800" initialSlide="{{index}}" (ionSlideDidChange)="slideChange()"
+              (ionSlideNextStart)="next(false)" (ionSlidePrevStart)="prev(false)">
+    <ion-slide *ngFor="let item  of mPlayer.playList ">
+      <section class="disk" ngClass="{{mPlayer.playState?'active':''}}">
+        <img class="song-img" [src]="item.al.picUrl">
+        <img class="record" src="assets/img/ic_disc.png">
+      </section>
+    </ion-slide>
+  </ion-slides>
+  <span>
+    <audio #player preload="auto"></audio>
+  </span>
+</ion-content>
+<ion-footer no-border>
+  <div class="process">
+    <span>{{ mPlayer.currentTime |duration }}</span>
+    <div class="process-bar">
+      <div class="rdy" [ngStyle]="{width: mPlayer.rdyline+'%'}"></div>
+      <!--<div class="cur" [ngStyle]="{width: mPlayer.curline+'%'}">
+        <span id="processBtn" class="process-btn c-btn"></span>
+      </div>-->
+      <ion-range class="range" max="1000" [(ngModel)]="mPlayer.curline" (ionFocus)="stopUpdate()"
+                 (ionBlur)="seek()"></ion-range>
+    </div>
+    <span>{{mPlayer.duration | duration }}</span>
+  </div>
+  <div class="control">
+    <span class="c-btn loop-btn" (click)="loop()">{{ mPlayer.loopState?1:'' }}</span>
+    <span class="pre c-btn" (click)="prev()"></span>
+    <span class="play c-btn" (click)="play()" [hidden]="mPlayer.playState"></span>
+    <span class="pause c-btn" (click)="play()" [hidden]="!mPlayer.playState"></span>
+    <span class="next c-btn" (click)="next()"></span>
+    <span class="c-btn list-btn" (click)="presentModal()"></span>
+  </div>
+</ion-footer>
+
