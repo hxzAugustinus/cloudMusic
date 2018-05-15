@@ -24,7 +24,7 @@ export class dividerService {
 
 
   login() {
-    let seq = this.api.get('login/cellphone', {phone: 13638682603, password: 'hxz19910823'});
+    let seq = this.api.get('login/cellphone', {phone: 'tel', password: 'password'});
     return seq.toPromise().then((data: any) => {
       return data.code == 200 && this.setUser(data);
     }, err => {
