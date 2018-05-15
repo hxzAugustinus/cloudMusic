@@ -19,7 +19,7 @@
       <ion-row>
         <ion-col>
           <img src="{{baseInfo.picUrl||baseInfo.coverImgUrl}}"/>
-          <span class="play-number">{{listDetail.playCount}}</span>
+          <span class="play-number">{{listDetail.playCount| ary}}</span>
         </ion-col>
         <ion-col col-7>
           <div>{{baseInfo.name }}</div>
@@ -39,34 +39,43 @@
       <ion-row>
         <ion-col>
           <ion-icon class="ion-ios-add-circle-outline"></ion-icon>
-          <span>100</span>
+          <span>{{listDetail.subscribedCount}}</span>
         </ion-col>
         <ion-col>
           <ion-icon class="ion-ios-text-outline"></ion-icon>
-          <span>100</span>
+          <span>{{listDetail.commentCount}}</span>
         </ion-col>
         <ion-col>
           <ion-icon class="ion-ios-share-outline"></ion-icon>
-          <span>100</span>
+          <span>{{listDetail.shareCount}}</span>
         </ion-col>
         <ion-col>
           <ion-icon class="ion-ios-download-outline"></ion-icon>
-          <span>100</span>
+          <span>下载</span>
         </ion-col>
       </ion-row>
     </ion-grid>
   </section>
-  <div #playlist class="tool-menu">
+  <div #playlist class="tool-menu" (click)="toPlayList()">
     <ion-icon class="ion-ios-play"></ion-icon>
     <p>播放全部</p>
-    <ion-icon ngClass="end" class="ion-ios-menu"></ion-icon>
+    <div ngClass="end" [ngSwitch]="checkboxMark" (click)="multiSelect($event)">
+      <ion-icon *ngSwitchCase="false" class="ion-ios-menu"></ion-icon>
+      <span *ngSwitchCase="true" (click)="handlerCheck()">完成</span>
+    </div>
   </div>
   <ion-scroll [scrollY]="scrollMark">
     <ion-list class="file-count">
-      <a ion-item *ngFor="let song of listDetail.tracks;index as i;">
-        <span item-start>{{i+1}}</span>
+      <a ion-item *ngFor="let song of listDetail.tracks;index as i;" [ngSwitch]="checkboxMark" (click)="toPlayList(i)">
+        <ion-checkbox *ngSwitchCase="true" [(ngModel)]="song.check"></ion-checkbox>
+        <span item-start *ngSwitchCase="false">{{i+1}}</span>
         <h2>{{song.name}}</h2>
-        <p>Hayao Miyazaki • 1988</p>
+        <p>
+          <span *ngFor="let author of song.ar;let index=first;">
+            <em *ngIf="!index">/</em>{{author.name}}
+          </span>
+          <span>- {{song.al.name}}</span>
+        </p>
       </a>
     </ion-list>
   </ion-scroll>

@@ -22,7 +22,7 @@ $ node app.js
 3. container.createComponent to add the dynamic components to the container in order;
 4. use [Dragula](https://github.com/bevacqua/dragula) to dynamic ordering of dragging;
 - How to refresh or infinite  in  some of  slides 
-- scroll list divider
+- scroll list divider(position : sticky)
 1. watch ionScroll to get realtime rolling(notice : use ngZone to change variable);
 2. use scrollTo to collapse the list and scroll to the divider;
 - hot-code-push 
