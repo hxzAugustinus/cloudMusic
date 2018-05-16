@@ -13,6 +13,7 @@ import {TabsPage} from '../pages/tabs/tabs';
 import {SongListPage} from "../pages/song-list/song-list";
 import {PlayerPage} from '../pages/player/player';
 import {ListSongModalPage} from "../pages/list-song-modal/list-song-modal";
+import { LoginPage } from "../pages/login/login";
 /*plugin*/
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -45,7 +46,8 @@ import { MediaPlayerProvider } from '../providers/media-player/media-player';
     TabsPage,
     SongListPage,
     PlayerPage,
-    ListSongModalPage
+    ListSongModalPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,8 @@ import { MediaPlayerProvider } from '../providers/media-player/media-player';
     TabsPage,
     SongListPage,
     PlayerPage,
-    ListSongModalPage
+    ListSongModalPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

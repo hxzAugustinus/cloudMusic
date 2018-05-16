@@ -10,7 +10,7 @@ import {Storage} from '@ionic/storage';
 
 @Injectable()
 export class dividerService {
-  private user: any;
+  public user: any;
   private scrollStep = new Subject<string>();
   observable = this.scrollStep.asObservable();
 
@@ -23,8 +23,8 @@ export class dividerService {
   }
 
 
-  login() {
-    let seq = this.api.get('login/cellphone', {phone: 13638682603, password: 'hxz19910823'});
+  login(user) {
+    let seq = this.api.get('login/cellphone', {phone: user.tel, password: user.pwd});
     return seq.toPromise().then((data: any) => {
       return data.code == 200 && this.setUser(data);
     }, err => {
@@ -32,9 +32,9 @@ export class dividerService {
     });
   }
 
-  getSongMenu() {
+  getSongMenu(id) {
     return this.getUser().then(() => {
-      let seq = this.api.get('user/playlist', {uid: this.user.profile.userId});
+      let seq = this.api.get('user/playlist', {uid: id});
       return seq.toPromise().then((data: any) => {
         return data.code == 200 && this.separateKind(data.playlist);
       }, err => {
@@ -56,7 +56,7 @@ export class dividerService {
         this.user = json;
         return Promise.resolve(json);
       } else {
-        return this.login();
+        return Promise.reject('');
       }
     })
   }
