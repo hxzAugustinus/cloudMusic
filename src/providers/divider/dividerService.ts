@@ -22,7 +22,6 @@ export class dividerService {
     this.scrollStep.next(direction);
   }
 
-
   login(user) {
     let seq = this.api.get('login/cellphone', {phone: user.tel, password: user.pwd});
     return seq.toPromise().then((data: any) => {
