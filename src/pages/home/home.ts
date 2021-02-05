@@ -14,15 +14,17 @@ export class HomePage {
   songList: any = {title: '我创建的歌单', options: {count: true, name: true, download: true}};
   collectList: any = {title: '我收藏的歌单', options: {count: true, name: true, creator: true}};
   MVlist: any;
+  user: any;
 
   constructor(public navCtrl: NavController, public ngZone: NgZone, public dividerService: dividerService, public mockData: mockData) {
     /*this.songList = this.mockData.getMySongList();
     this.collectList = this.mockData.getMyCollectList();*/
     this.MVlist = this.mockData.getMyMVList();
+    this.user=this.dividerService.user;
   }
 
   ionViewWillEnter() {
-    this.dividerService.getSongMenu().then((data: KindPlayList) => {
+    this.dividerService.getSongMenu(this.user.profile.userId).then((data: KindPlayList) => {
       console.log(data);
       this.songList.playlist = data.me;
       this.collectList.playlist = data.other;
@@ -32,7 +34,7 @@ export class HomePage {
   scrollHandler(event) {
     this.ngZone.run(() => {
         /*todo: sometime event maybe null ,need analyze*/
-        console.log(event);
+        /*console.log(event);*/
         this.dividerService.announceScroll(event.directionY);
       }
     )
